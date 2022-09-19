@@ -2,7 +2,7 @@
 
 PillPal is a medication management and administration application, that helps healthcare providers and patients better manage their treatments. The application provides medication schedules and reminders, along with other features to help secure and improve drug administration. 
 
-The idea from PillPal was born from the need to help both carers and patients keep track of their medication, especially for elderly or dement people. The main goal it to improve adherence and reduce the risk of medicine errors. 
+The idea from PillPal was born from the need to help both carers and patients keep track of their medication, especially for elderly or people with dementia. The main goal it to improve adherence and reduce the risk of medicine errors. 
 
 
 ## User Stories 
@@ -21,13 +21,15 @@ The idea from PillPal was born from the need to help both carers and patients ke
 ## List of ideas 
 - Profile automatically filled in using Google/Apple/FB or NemID.
 - List of medications and schedule. 
-- Different profiles for healthcare professionals, carers, patients (both higghly capable and elderly/dement).
+- Different profiles for healthcare professionals, carers, patients (both higghly capable and elderly/dementia).
 - Include a picture of each patient. 
 - Possibility to upload prescriptions (access to FMK - FaellesMedicinKort)
 - Include basic information and picture of each drug (using promedicin database) with possibility of scanning barcode
 - Include other health functions/vitals (blood pressure, heart rate, mood, sleep, symptoms, pain).
 - Possibility to include a "smart"/connected pill box. 
 - Graphical representations of reports (adherence, vitals etc).
+- Reminders for refilling medicines.
+- Possibility to add pets.
 
 ## Authors
 
