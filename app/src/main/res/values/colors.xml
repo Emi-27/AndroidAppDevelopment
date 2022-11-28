@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_steel_blue">#a5bad7</color>
+    <color name="steel_blue">#4c7bb4</color>
+    <color name="queen_blue">#426896</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="cultured">#f6f5f6</color>
+    <color name="blood">#e63946</color>
+    <color name="pink">#ffafcc</color>
+
+</resources>

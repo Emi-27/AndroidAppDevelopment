@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.groupdev.pillpall.view.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_addReminderFragment"
+            app:destination="@id/addReminderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_medications"
+        android:name="com.groupdev.pillpall.view.MedicationsFragment"
+        android:label="@string/title_medications"
+        tools:layout="@layout/fragment_medications" />
+
+    <fragment
+        android:id="@+id/navigation_vitals"
+        android:name="com.groupdev.pillpall.view.VitalsFragment"
+        android:label="@string/title_vitals"
+        tools:layout="@layout/fragment_vitals" >
+        <action
+            android:id="@+id/action_navigation_vitals_to_addVitalFragment"
+            app:destination="@id/addVitalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVitalFragment"
+        android:name="com.groupdev.pillpall.view.AddVitalFragment"
+        android:label="fragment_add_vital"
+        tools:layout="@layout/fragment_add_vital" />
+    <fragment
+        android:id="@+id/addReminderFragment"
+        android:name="com.groupdev.pillpall.view.AddReminderFragment"
+        android:label="fragment_add_reminder"
+        tools:layout="@layout/fragment_add_reminder" />
+</navigation>

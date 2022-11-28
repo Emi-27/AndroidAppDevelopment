@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PillPall</string>
+    <string name="title_home">Home</string>
+    <string name="title_medications">Medications</string>
+    <string name="title_vitals">Vitals</string>
+    <string name="share">Share</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="log_out">Log Out</string>
+</resources>
