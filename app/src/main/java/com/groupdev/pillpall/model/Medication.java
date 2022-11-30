@@ -8,11 +8,11 @@ public class Medication {
     private UnitOfDosage unitOfDosage;
     private String notes;
 
-    private enum UnitOfDosage {
+    public enum UnitOfDosage {
         MG, ML, G, MCG, IU
     }
 
-    private enum Form {
+    public enum Form {
         TABLET, CAPSULE, LIQUID, INHALER, INJECTION, PATCH, POWDER, SPRAY, GEL, CREAM, OINTMENT, DROPS, OTHER
     }
 

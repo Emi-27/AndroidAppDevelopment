@@ -4,16 +4,24 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.groupdev.pillpall.model.Medication;
+import com.groupdev.pillpall.storage.MedicationRepository;
+
+import java.util.List;
+
 public class MedicationsViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private MedicationRepository medicationRepository;
 
     public MedicationsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("Medications");
+        medicationRepository = MedicationRepository.getInstance();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Medication>> getAllMedications(){
+        return medicationRepository.getAllMedications();
+    }
+
+    public void addMedication(Medication medication){
+        medicationRepository.addMedication(medication);
     }
 }
