@@ -27,10 +27,10 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private HomeViewModel homeViewModel;
-    private NavController navController;
+    private HomeViewModel viewModel;
     private RemindersAdapter remindersAdapter;
-    FloatingActionButton fab;
+    private FloatingActionButton fab;
+    private NavController navController;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -39,32 +39,29 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        homeViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
+
         initializeViews(view);
-        setupViews();
+
+        fab.setOnClickListener(v -> {
+            navController.navigate(R.id.addReminderFragment);
+        });
+
+        remindersAdapter = new RemindersAdapter();
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        viewModel.getAllReminders().observe(getViewLifecycleOwner(), reminders -> {
+            remindersAdapter.setReminders(reminders);
+            recyclerView.setAdapter(remindersAdapter);
+        });
+
+        recyclerView.setAdapter(remindersAdapter);
     }
 
     private void initializeViews(View view) {
         navController = Navigation.findNavController(view);
         fab = view.findViewById(R.id.add_reminder_button);
         recyclerView = view.findViewById(R.id.home_recyclerView);
-    }
-
-    private void setupViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.hasFixedSize();
-
-        List<Reminder> reminders = new ArrayList<>();
-        reminders.add(new Reminder(" Reminder name uno", "10:00"));
-        reminders.add(new Reminder(" Reminder name dos ", "12:00"));
-        reminders.add(new Reminder(" Reminder name tres", "15:00"));
-        reminders.add(new Reminder(" Reminder name 4", "16:00" ));
-
-        remindersAdapter = new RemindersAdapter(reminders);
-        recyclerView.setAdapter(remindersAdapter);
-
-        fab.setOnClickListener(v -> {
-            navController.navigate(R.id.addReminderFragment);
-        });
     }
 }

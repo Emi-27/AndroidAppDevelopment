@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -11,23 +10,21 @@
         android:layout_height="60dp">
 
         <TextView
-            android:id="@+id/name_item_reminder"
+            android:id="@+id/name_medicationName_reminder"
             android:layout_width="181dp"
             android:layout_height="17dp"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/time_item_reminder"
+            app:layout_constraintStart_toEndOf="@+id/item_time_reminder"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/time_item_reminder"
+            android:id="@+id/item_time_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:text="TextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,13 +36,13 @@
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toStartOf="@+id/checkBox_item_reminder"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_notifications_24" />
+            app:srcCompat="@drawable/ic_notifications"
+            android:contentDescription="@string/image_description" />
 
         <CheckBox
             android:id="@+id/checkBox_item_reminder"
-            android:layout_width="45dp"
-            android:layout_height="42dp"
-
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +52,7 @@
             android:id="@+id/divider"
             android:layout_width="409dp"
             android:layout_height="1dp"
+            android:layout_marginBottom="4dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

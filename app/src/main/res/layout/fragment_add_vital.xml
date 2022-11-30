@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Blood pressure"
+        android:layout_marginTop="28dp"
+        android:text="@string/blood_pressure"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Heart rate"
+        android:layout_marginTop="26dp"
+        android:text="@string/heart_rate"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_bloodPressure" />
@@ -33,8 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Temperature"
+        android:layout_marginTop="26dp"
+        android:text="@string/temperature"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_oxygenSaturation" />
@@ -44,8 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Respiratory rate"
+        android:layout_marginTop="26dp"
+        android:text="@string/respiratory_rate"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_weight" />
@@ -55,8 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="OxygenSaturation"
+        android:layout_marginTop="26dp"
+        android:text="@string/oxygen_saturation"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_height" />
@@ -66,8 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Weight"
+        android:layout_marginTop="26dp"
+        android:text="@string/weight"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_temperature" />
@@ -77,8 +77,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Height"
+        android:layout_marginTop="28dp"
+        android:text="@string/height"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_heartRate" />
@@ -88,8 +88,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="BMI"
+        android:layout_marginTop="26dp"
+        android:text="@string/bmi"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_notes" />
@@ -99,8 +99,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Blood glucose"
+        android:layout_marginTop="26dp"
+        android:text="@string/blood_glucose"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_respiratoryRate" />
@@ -110,16 +110,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Notes"
+        android:layout_marginTop="26dp"
+        android:text="@string/notes"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_bloodGlucose" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextBloodPressure"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -129,11 +129,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextHeartRate"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="14sp"
@@ -141,13 +141,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextHeight"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="112dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -155,11 +154,10 @@
     <EditText
         android:id="@+id/editTextTextPersonName4"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="160dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -167,11 +165,10 @@
     <EditText
         android:id="@+id/editTextTextPersonName5"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="208dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -179,11 +176,10 @@
     <EditText
         android:id="@+id/editTextTextPersonName6"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="256dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -191,11 +187,10 @@
     <EditText
         android:id="@+id/editTextTextPersonName7"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="304dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -203,11 +198,10 @@
     <EditText
         android:id="@+id/editTextTextPersonName8"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="352dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -215,11 +209,10 @@
     <EditText
         android:id="@+id/editTextTextPersonName9"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginTop="400dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -227,22 +220,21 @@
     <EditText
         android:id="@+id/editTextTextPersonName10"
         android:layout_width="169dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="448dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttom_addNewVitals"
+        android:id="@+id/button_addNewVitals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="520dp"
-        android:text="Add"
+        android:text="@string/add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

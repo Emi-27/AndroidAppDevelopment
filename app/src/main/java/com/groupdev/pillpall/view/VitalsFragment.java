@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ public class VitalsFragment extends Fragment {
     private VitalsViewModel vitalsViewModel;
     private NavController navController;
     private FloatingActionButton fab;
+    private TextView textView;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class VitalsFragment extends Fragment {
 
     private void initializeViews(View view) {
         navController = Navigation.findNavController(view);
-        fab = view.findViewById(R.id.add_vitals_button);
+        fab = view.findViewById(R.id.button_add_vitals);
+        textView = view.findViewById(R.id.text_vitals);
     }
 
     private void setupViews() {
@@ -46,8 +49,4 @@ public class VitalsFragment extends Fragment {
         });
 
     }
-
-
-
-
 }

@@ -6,27 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/A"
-            android:icon="@drawable/ic_baseline_person_24"
-            android:title="Profile" />
+            android:icon="@drawable/ic_profile_white"
+            android:title="@string/profile" />
         <item
             android:id="@+id/B"
-            android:icon="@drawable/ic_baseline_add_circle_outline_24"
-            android:title="add Patient" />
+            android:icon="@drawable/ic_add_circle_outline"
+            android:title="@string/add_patient" />
         <item
             android:id="@+id/C"
-            android:icon="@drawable/ic_baseline_person_add_24"
-            android:title="Invite Friend" />
+            android:icon="@drawable/ic_profile_add"
+            android:title="@string/invite_friend" />
     </group>
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/D"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Something 4" />
 
         <item
             android:id="@+id/E"
-            android:icon="@drawable/ic_baseline_logout_24"
+            android:icon="@drawable/ic_logout"
             android:title="@string/log_out" />
     </group>
 

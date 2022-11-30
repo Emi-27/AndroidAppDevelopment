@@ -1,12 +1,14 @@
 package com.groupdev.pillpall.model;
 
-import java.sql.Date;
-import java.sql.Time;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "vitals_table")
 public class Vitals {
+
+    @PrimaryKey(autoGenerate = true)
     private long id;
-    private Date date;
-    private Time time;
+    private String dateTime;
     private int bloodPressure;
     private int heartRate;
     private double temperature;
@@ -21,10 +23,9 @@ public class Vitals {
     public Vitals() {
     }
     
-    public Vitals(long id, Date date, Time time, int bloodPressure, int heartRate, double temperature, int respiratoryRate, int oxygenSaturation, double weight, double height, double bmi, double bloodGlucose, String notes) {
+    public Vitals(long id, String dateTime, int bloodPressure, int heartRate, double temperature, int respiratoryRate, int oxygenSaturation, double weight, double height, double bmi, double bloodGlucose, String notes) {
         this.id = id;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
         this.bloodPressure = bloodPressure;
         this.heartRate = heartRate;
         this.temperature = temperature;
@@ -45,20 +46,12 @@ public class Vitals {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     public int getBloodPressure() {
@@ -144,18 +137,17 @@ public class Vitals {
     @Override
     public String toString() {
         return "Vitals{" +
-                "id='" + id + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", bloodPressure='" + bloodPressure + '\'' +
-                ", heartRate='" + heartRate + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", respiratoryRate='" + respiratoryRate + '\'' +
-                ", oxygenSaturation='" + oxygenSaturation + '\'' +
-                ", weight='" + weight + '\'' +
-                ", height='" + height + '\'' +
-                ", bmi='" + bmi + '\'' +
-                ", bloodGlucose='" + bloodGlucose + '\'' +
+                "id=" + id +
+                ", dateTime=" + dateTime +
+                ", bloodPressure=" + bloodPressure +
+                ", heartRate=" + heartRate +
+                ", temperature=" + temperature +
+                ", respiratoryRate=" + respiratoryRate +
+                ", oxygenSaturation=" + oxygenSaturation +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", bmi=" + bmi +
+                ", bloodGlucose=" + bloodGlucose +
                 ", notes='" + notes + '\'' +
                 '}';
     }

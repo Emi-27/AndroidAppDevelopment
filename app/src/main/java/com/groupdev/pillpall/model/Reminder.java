@@ -1,46 +1,41 @@
 package com.groupdev.pillpall.model;
 
-import java.sql.Time;
-import java.util.Date;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "reminders_table")
 public class Reminder {
 
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
     private String description;
-    private Medication medication;
+    private String medication;
     private int quantity;
     private int frequency;
     private UnitOfTime unitOfTime;
-    private String startTime;
-    private Date startDate;
+    private String startDateTime;
+    private String endDateTime;
     private boolean repeat;
     private boolean active;
     private boolean isTaken;
 
-    private enum UnitOfTime {
-        HOURS, DAYS, WEEKS, MONTHS, YEARS
+    public enum UnitOfTime {
+        HOURS, DAYS, WEEKS
     }
 
     public Reminder() {
     }
 
-    public Reminder(String name, String startTime ){
-        this.name = name;
-        this.startTime = startTime;
-
-    }
-
-    public Reminder(long id, String name, String description, Medication medication, int quantity, int frequency, UnitOfTime unitOfTime, String startTime, Date startDate, boolean repeat, boolean active,boolean isTaken) {
-        this.id = id;
+    public Reminder(String name, String description, String medication, int quantity, int frequency, UnitOfTime unitOfTime, String startDateTime, String endDateTime, boolean repeat, boolean active, boolean isTaken) {
         this.name = name;
         this.description = description;
         this.medication = medication;
         this.quantity = quantity;
         this.frequency = frequency;
         this.unitOfTime = unitOfTime;
-        this.startTime = startTime;
-        this.startDate = startDate;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
         this.repeat = repeat;
         this.active = active;
         this.isTaken = isTaken;
@@ -70,11 +65,11 @@ public class Reminder {
         this.description = description;
     }
 
-    public Medication getMedication() {
+    public String getMedication() {
         return medication;
     }
 
-    public void setMedication(Medication medication) {
+    public void setMedication(String medication) {
         this.medication = medication;
     }
 
@@ -102,20 +97,20 @@ public class Reminder {
         this.unitOfTime = unitOfTime;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setStartDateTime(String startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getEndDateTime() {
+        return endDateTime;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setEndDateTime(String endDateTime) {
+        this.endDateTime = endDateTime;
     }
 
     public boolean isRepeat() {
@@ -148,14 +143,15 @@ public class Reminder {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", medication=" + medication +
+                ", medication='" + medication + '\'' +
                 ", quantity=" + quantity +
                 ", frequency=" + frequency +
                 ", unitOfTime=" + unitOfTime +
-                ", startTime=" + startTime +
-                ", startDate=" + startDate +
+                ", startDateTime='" + startDateTime + '\'' +
+                ", endDateTime='" + endDateTime + '\'' +
                 ", repeat=" + repeat +
                 ", active=" + active +
+                ", isTaken=" + isTaken +
                 '}';
     }
 

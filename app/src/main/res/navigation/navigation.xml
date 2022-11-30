@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_addReminderFragment"
-            app:destination="@id/addReminderFragment" />
+            app:destination="@id/addReminderFragment"
+            app:popUpTo="@id/navigation_home" />
     </fragment>
 
     <fragment
@@ -28,7 +29,8 @@
         tools:layout="@layout/fragment_vitals" >
         <action
             android:id="@+id/action_navigation_vitals_to_addVitalFragment"
-            app:destination="@id/addVitalFragment" />
+            app:destination="@id/addVitalFragment"
+            app:popUpTo="@id/navigation_vitals" />
     </fragment>
     <fragment
         android:id="@+id/addVitalFragment"

@@ -14,18 +14,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.viewModel.AddVitalViewModel;
 
 public class AddVitalFragment extends Fragment {
 
+    private AddVitalViewModel ViewModel;
+    private NavController navController;
     private Button addVitalButton;
-    private AddVitalViewModel mViewModel;
-
-    public static AddVitalFragment newInstance() {
-        return new AddVitalFragment();
-    }
+    private TextView vitalName;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -37,7 +36,8 @@ public class AddVitalFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NavController navController = Navigation.findNavController(view);
+        ViewModel = new ViewModelProvider(this).get(AddVitalViewModel.class);
+
         /* addVitalButton = view.findViewById(R.id.add_vitals_button);
 
         addVitalButton.setOnClickListener (view1 -> {
@@ -46,10 +46,10 @@ public class AddVitalFragment extends Fragment {
         */
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AddVitalViewModel.class);
-    }
+    private void initViews(View view) {
+        navController = Navigation.findNavController(view);
+        addVitalButton = view.findViewById(R.id.button_addNewVitals);
+        vitalName = view.findViewById(R.id.edit1);
 
+    }
 }

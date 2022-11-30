@@ -1,19 +1,30 @@
 package com.groupdev.pillpall.viewModel;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+import com.groupdev.pillpall.model.Reminder;
+import com.groupdev.pillpall.repository.ReminderRepository;
 
-    private final MutableLiveData<String> mText;
+import java.util.List;
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("Home");
+public class HomeViewModel extends AndroidViewModel {
+
+    private final ReminderRepository repository;
+
+    public HomeViewModel(Application app) {
+        super(app);
+        repository = ReminderRepository.getInstance(app);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Reminder>> getAllReminders() {
+        return repository.getAllReminders();
     }
+
+    public void delete(final Reminder reminder) {
+        repository.deleteReminder(reminder);
+    }
+
 }

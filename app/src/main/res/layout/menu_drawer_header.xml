@@ -13,7 +13,7 @@
         android:layout_height="75dp"
         android:layout_marginTop="24dp"
         android:background="@color/black"
-        android:src="@drawable/profile_icon"
+        android:src="@drawable/ic_profile_colour"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="User Name"
+        android:text="@string/user_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="@+id/drawer_header_image"
         app:layout_constraintTop_toBottomOf="@+id/drawer_header_image" />
@@ -31,7 +31,7 @@
         android:id="@+id/drawer_header_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Email"
+        android:text="@string/user_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/drawer_header_username"
         app:layout_constraintTop_toBottomOf="@+id/drawer_header_username" />

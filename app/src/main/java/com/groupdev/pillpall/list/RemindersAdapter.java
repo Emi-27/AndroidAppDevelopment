@@ -19,42 +19,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
 
     private List<Reminder> reminders;
     private OnReminderClickListener listener;
+    private OnRemoveReminderClickListener removeListener;
 
-    public RemindersAdapter(List<Reminder> reminders) {
+    public RemindersAdapter() {
         this.reminders = reminders;
-        this.listener = listener;
-    }
-
-    @NonNull
-    @Override
-    public RemindersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reminder_item, parent, false);
-        return new RemindersViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RemindersViewHolder holder, int position) {
-        holder.reminderName.setText(reminders.get(position).getName());
-        holder.reminderTime.setText(reminders.get(position).getStartTime());
-        if(reminders.get(position).isTaken()){
-            holder.reminderTaken.setChecked(true);
-        }
-        else{
-            holder.reminderTaken.setChecked(false);
-        }
-
-        if(reminders.get(position).isActive()){
-            holder.reminderImage.setImageResource(R.drawable.ic_notifications_active_24);
-        }
-        else{
-            holder.reminderImage.setImageResource(R.drawable.ic_baseline_notifications_24);
-        }
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return reminders.size();
     }
 
     public void setReminders(List<Reminder> reminders) {
@@ -62,37 +30,65 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
         notifyDataSetChanged();
     }
 
-    public Reminder getReminderAt(int position) {
-        return reminders.get(position);
+    @Override
+    public RemindersAdapter.RemindersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item_reminder, parent, false);
+        return new RemindersViewHolder(view);
     }
 
-    public class RemindersViewHolder extends RecyclerView.ViewHolder {
-        TextView reminderName;
-        TextView reminderTime;
-        CheckBox reminderTaken;
-        ImageView reminderImage;
+    @Override
+    public void onBindViewHolder(@NonNull RemindersViewHolder holder, int position) {
+        Reminder reminder = reminders.get(position);
+        holder.reminderName.setText(reminder.getName());
+        holder.reminderTime.setText(reminder.getDescription());
 
-        public RemindersViewHolder(@NonNull View itemView) {
+        holder.reminderTaken.setChecked(reminders.get(position).isTaken());
+
+        if(reminders.get(position).isActive()){
+            holder.reminderImage.setImageResource(R.drawable.ic_notifications_active);
+        }
+        else{
+            holder.reminderImage.setImageResource(R.drawable.ic_notifications);
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        if(reminders != null){
+            return reminders.size();
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public void setOnClickListener(OnReminderClickListener<Reminder> listener) {
+        this.reminders = reminders;
+        notifyDataSetChanged();
+    }
+
+
+    public class RemindersViewHolder extends RecyclerView.ViewHolder {
+        private TextView reminderName;
+        private TextView reminderTime;
+        private CheckBox reminderTaken;
+        private ImageView reminderImage;
+
+        public RemindersViewHolder(View itemView) {
             super(itemView);
-            reminderName = itemView.findViewById(R.id.name_item_reminder);
-            reminderTime = itemView.findViewById(R.id.time_item_reminder);
+            reminderName = itemView.findViewById(R.id.name_medicationName_reminder);
+            reminderTime = itemView.findViewById(R.id.item_time_reminder);
             reminderTaken = itemView.findViewById(R.id.checkBox_item_reminder);
             reminderImage = itemView.findViewById(R.id.image_item_reminder);
         }
-
-        public void bind(final Reminder reminder, final OnReminderClickListener listener) {
-
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onReminderClick(reminder);
-                }
-            });
-        }
     }
 
-    public interface OnReminderClickListener {
+    public interface OnReminderClickListener<T> {
         void onReminderClick(Reminder reminder);
+    }
+
+    public interface OnRemoveReminderClickListener {
+        void onRemoveReminderClick(Reminder reminder);
     }
 }
