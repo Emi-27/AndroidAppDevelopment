@@ -1,20 +1,23 @@
 package com.groupdev.pillpall.viewModel;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.groupdev.pillpall.model.Medication;
-import com.groupdev.pillpall.storage.MedicationRepository;
+import com.groupdev.pillpall.repository.MedicationRepository;
 
 import java.util.List;
 
-public class MedicationsViewModel extends ViewModel {
+public class MedicationsViewModel extends AndroidViewModel {
 
     private MedicationRepository medicationRepository;
 
-    public MedicationsViewModel() {
-        medicationRepository = MedicationRepository.getInstance();
+    public MedicationsViewModel(Application application) {
+        super(application);
+        medicationRepository = MedicationRepository.getInstance(application);
     }
 
     public LiveData<List<Medication>> getAllMedications(){
@@ -24,4 +27,5 @@ public class MedicationsViewModel extends ViewModel {
     public void addMedication(Medication medication){
         medicationRepository.addMedication(medication);
     }
+
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.list.MedicationAdapter;
@@ -35,8 +36,10 @@ public class MedicationsFragment extends Fragment {
     private List<Medication> medications;
     private MedicationsViewModel medicationsViewModel;
     private NavController navController;
+
     FloatingActionButton fab;
 
+    //TODO DELETE AND EDIT MEDICATION
 
     @Nullable
     @Override
@@ -54,7 +57,7 @@ public class MedicationsFragment extends Fragment {
 
     private void initializeViews(View view){
         navController = Navigation.findNavController(view);
-        //TODO fab
+        fab = view.findViewById(R.id.add_medication_button);
         recyclerView = view.findViewById(R.id.medications_recyclerView);
     }
 
@@ -64,19 +67,21 @@ public class MedicationsFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         medications = new ArrayList<>();
         medicationsViewModel.getAllMedications().observe(getViewLifecycleOwner(), meds -> {
-            for (Medication m: meds){
-                medications.add(m);
-            }
+            medicationAdapter.setMedications(meds);
         });
 
         medicationAdapter = new MedicationAdapter(medications);
         recyclerView.setAdapter(medicationAdapter);
 
-        //TODO fab onclick
 
         medicationAdapter.setOnClickListener(med -> {
-            Toast.makeText(getContext(), med.getName(), Toast.LENGTH_SHORT);
+
         });
+
+        fab.setOnClickListener(l -> {
+            navController.navigate(R.id.addMedicationFragment);
+        });
+
 
     }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="units_array">
+        <item>g</item>
+        <item>mg</item>
+        <item>mcg</item>
+        <item>ml</item>
+        <item>IU</item>
+    </string-array>
+</resources>

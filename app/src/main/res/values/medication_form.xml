@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="form_array">
+        <item>Pill</item>
+        <item>Solution</item>
+        <item>Injection</item>
+        <item>Powder</item>
+        <item>Drops</item>
+        <item>Inhaler</item>
+        <item>Patch</item>
+        <item>Powder</item>
+        <item>Spray</item>
+        <item>Cream</item>
+    </string-array>
+</resources>

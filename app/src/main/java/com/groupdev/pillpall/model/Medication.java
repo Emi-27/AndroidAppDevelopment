@@ -1,6 +1,12 @@
 package com.groupdev.pillpall.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "medications_table")
 public class Medication {
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
     private double dosage;
@@ -13,14 +19,13 @@ public class Medication {
     }
 
     public enum Form {
-        TABLET, CAPSULE, LIQUID, INHALER, INJECTION, PATCH, POWDER, SPRAY, GEL, CREAM, OINTMENT, DROPS, OTHER
+        PILL, LIQUID, INHALER, INJECTION, PATCH, POWDER, SPRAY, GEL, CREAM, OINTMENT, DROPS, OTHER
     }
 
     public Medication() {
     }
 
-    public Medication(long id, String name, int frequency, double dosage, int quantity, Form form, UnitOfDosage unitOfDosage, String startDate, String endDate, String notes) {
-        this.id = id;
+    public Medication(String name, int frequency, double dosage, int quantity, Form form, UnitOfDosage unitOfDosage, String startDate, String endDate, String notes) {
         this.name = name;
         this.dosage = dosage;
         this.form = form;

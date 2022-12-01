@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.list.RemindersAdapter;

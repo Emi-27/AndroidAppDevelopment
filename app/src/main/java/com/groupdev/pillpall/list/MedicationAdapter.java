@@ -67,4 +67,9 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
         void onClick(Medication medication);
     }
 
+    public void setMedications(List<Medication> medications){
+        this.medications = medications;
+        notifyDataSetChanged();
+    }
+
 }

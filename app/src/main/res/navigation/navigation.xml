@@ -40,6 +40,14 @@
     <fragment
         android:id="@+id/addReminderFragment"
         android:name="com.groupdev.pillpall.view.AddReminderFragment"
-        android:label="fragment_add_reminder"
+        android:label="Add reminder"
         tools:layout="@layout/fragment_add_reminder" />
+
+    <fragment
+        android:id="@+id/addMedicationFragment"
+        android:name="com.groupdev.pillpall.view.AddMedicationFragment"
+        android:label="Add medication"
+        tools:layout="@layout/fragment_add_medication"
+        ></fragment>
+
 </navigation>
