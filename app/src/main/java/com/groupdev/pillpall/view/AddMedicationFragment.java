@@ -25,11 +25,11 @@ import com.groupdev.pillpall.viewModel.MedicationsViewModel;
 
 public class AddMedicationFragment extends Fragment {
 
-    MedicationsViewModel medicationsViewModel;
-    EditText medicationName, medicationStrength, medicationNotes;
-    Button addMedicationButton;
-    Spinner unitSpinner, formSpinner;
-    Medication medicationToBeAdded;
+    private MedicationsViewModel medicationsViewModel;
+    private EditText medicationName, medicationStrength, medicationNotes;
+    private Button addMedicationButton;
+    private Spinner unitSpinner, formSpinner;
+    private Medication medicationToBeAdded;
     private NavController navController;
 
     @Override

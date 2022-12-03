@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "55681298700",
+    "project_id": "pillpall-71605",
+    "storage_bucket": "pillpall-71605.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55681298700:android:20d7e50b9ea914f0c65929",
+        "android_client_info": {
+          "package_name": "com.groupdev.pillpall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55681298700-3sf9pb8qnqqb4cf0bjdgf55sjh5dahjf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY_UI3WqA-3yX5jzbEsv1377Ch9vn37ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55681298700-3sf9pb8qnqqb4cf0bjdgf55sjh5dahjf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

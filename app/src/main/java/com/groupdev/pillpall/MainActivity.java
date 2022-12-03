@@ -1,11 +1,16 @@
 package com.groupdev.pillpall;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -16,6 +21,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.groupdev.pillpall.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
     private DrawerLayout drawerLayout;
-    private NavigationView navigationDrawer;
+    private NavigationView navigationView;
     private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
     private ActivityMainBinding binding;
+    private FirebaseAuth auth;
+    TextView drawerUsername, drawerEmail;
 
 
     @Override
@@ -35,16 +44,22 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
         initializeLayout();
         setupNavigation();
-
+        drawerUsername.setText(currentUser.getDisplayName());
+        drawerEmail.setText(currentUser.getEmail());
     }
 
     private void initializeLayout(){
         drawerLayout = findViewById(R.id.drawer_layout);
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
         toolbar = findViewById(R.id.toolbar);
-
+        navigationView = findViewById(R.id.navigation_drawer);
+        View header = navigationView.getHeaderView(0);
+        drawerEmail = header.findViewById(R.id.drawer_header_email);
+        drawerUsername = header.findViewById(R.id.drawer_header_username);
     }
 
     private void setupNavigation(){
@@ -61,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navigationDrawer, navController);
 
         /*
-        navigationDrawer.setNavigationItemSelectedListener(item -> {
+        navigationView.setNavigationItemSelectedListener(item -> {
             Bundle bundle = new Bundle();
 
             if (item.getItemId() == R.id.fragment_patients) {
@@ -75,8 +90,21 @@ public class MainActivity extends AppCompatActivity {
             }
             navController.navigate(item.getItemId(), bundle);
             drawerLayout.closeDrawer();
-            return true;
          */
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.logout_button){
+                    auth.signOut();
+                    Intent intent = new Intent(MainActivity.this, Login.class);
+                    startActivity(intent);
+                }
+
+
+                return true;
+            }
+        });
 
     }
 
