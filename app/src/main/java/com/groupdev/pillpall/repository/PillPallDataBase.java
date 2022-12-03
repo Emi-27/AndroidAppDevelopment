@@ -10,7 +10,7 @@ import com.groupdev.pillpall.model.Medication;
 import com.groupdev.pillpall.model.Reminder;
 import com.groupdev.pillpall.model.Vitals;
 
-@Database(entities = {Medication.class, Reminder.class, Vitals.class}, version = 3)
+@Database(entities = {Medication.class, Reminder.class, Vitals.class}, version = 4, exportSchema = false)
 
 public abstract class PillPallDataBase extends RoomDatabase {
 

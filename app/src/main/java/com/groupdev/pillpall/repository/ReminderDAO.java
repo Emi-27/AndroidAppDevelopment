@@ -28,7 +28,7 @@ public interface ReminderDAO {
     @Query("DELETE FROM reminders_table")
     void deleteAllReminders();
 
-    @Query("SELECT * FROM reminders_table WHERE startDateTime <= :date AND endDateTime >= :date")
+    @Query("SELECT * FROM reminders_table WHERE startDate <= :date AND endDate >= :date")
     LiveData<List<Reminder>> getRemindersByDate(int date);
 
 }

@@ -1,22 +1,20 @@
 package com.groupdev.pillpall.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
-import java.util.Comparator;
 
 @Entity(tableName = "reminders_table")
 public class Reminder implements Comparable<Reminder> {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
-    private String name;
+    private String medicationName;
     private String description;
-    private long medicationID;
     private int quantity;
     private int time;
-    private int startDateTime;
-    private int endDateTime;
+    private int startDate;
+    private int endDate;
     private boolean isRepeat;
     private boolean isActive;
     private boolean isTaken;
@@ -24,14 +22,14 @@ public class Reminder implements Comparable<Reminder> {
     public Reminder() {
     }
 
-    public Reminder(String name, String description, long medicationID, int quantity, int time, int startDateTime, int endDateTime, boolean isRepeat, boolean isActive, boolean isTaken) {
-        this.name = name;
+    @Ignore
+    public Reminder(String name, String description, int quantity, int time, int startDate, int endDate, boolean isRepeat, boolean isActive, boolean isTaken) {
+        this.medicationName = name;
         this.description = description;
-        this.medicationID = medicationID;
         this.quantity = quantity;
         this.time = time;
-        this.startDateTime = startDateTime;
-        this.endDateTime = endDateTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.isRepeat = isRepeat;
         this.isActive = isActive;
         this.isTaken = isTaken;
@@ -46,11 +44,15 @@ public class Reminder implements Comparable<Reminder> {
     }
 
     public String getName() {
-        return name;
+        return medicationName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getMedicationName() {
+        return medicationName;
+    }
+
+    public void setMedicationName(String medicationName) {
+        this.medicationName = medicationName;
     }
 
     public String getDescription() {
@@ -59,14 +61,6 @@ public class Reminder implements Comparable<Reminder> {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public long getMedicationID() {
-        return medicationID;
-    }
-
-    public void setMedicationID(long medicationID) {
-        this.medicationID = medicationID;
     }
 
     public int getQuantity() {
@@ -85,20 +79,20 @@ public class Reminder implements Comparable<Reminder> {
         this.time = time;
     }
 
-    public int getStartDateTime() {
-        return startDateTime;
+    public int getStartDate() {
+        return startDate;
     }
 
-    public void setStartDateTime(int startDateTime) {
-        this.startDateTime = startDateTime;
+    public void setStartDate(int startDate) {
+        this.startDate = startDate;
     }
 
-    public int getEndDateTime() {
-        return endDateTime;
+    public int getEndDate() {
+        return endDate;
     }
 
-    public void setEndDateTime(int endDateTime) {
-        this.endDateTime = endDateTime;
+    public void setEndDate(int endDate) {
+        this.endDate = endDate;
     }
 
     public boolean isRepeat() {
@@ -129,13 +123,12 @@ public class Reminder implements Comparable<Reminder> {
     public String toString() {
         return "Reminder{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + medicationName + '\'' +
                 ", description='" + description + '\'' +
-                ", medicationID=" + medicationID +
                 ", quantity=" + quantity +
                 ", time=" + time +
-                ", startDateTime='" + startDateTime + '\'' +
-                ", endDateTime='" + endDateTime + '\'' +
+                ", startDateTime='" + startDate + '\'' +
+                ", endDateTime='" + endDate + '\'' +
                 ", isRepeat=" + isRepeat +
                 ", isActive=" + isActive +
                 ", isTaken=" + isTaken +
