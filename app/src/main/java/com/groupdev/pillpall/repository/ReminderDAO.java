@@ -12,7 +12,7 @@ import com.groupdev.pillpall.model.Reminder;
 import java.util.List;
 
 @Dao
-public interface ReminderDao {
+public interface ReminderDAO {
     @Insert
     void insert(Reminder reminder);
 
@@ -27,4 +27,8 @@ public interface ReminderDao {
 
     @Query("DELETE FROM reminders_table")
     void deleteAllReminders();
+
+    @Query("SELECT * FROM reminders_table WHERE startDateTime <= :date AND endDateTime >= :date")
+    LiveData<List<Reminder>> getRemindersByDate(int date);
+
 }

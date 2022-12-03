@@ -25,7 +25,7 @@ public class Medication {
     public Medication() {
     }
 
-    public Medication(String name, int frequency, double dosage, int quantity, Form form, UnitOfDosage unitOfDosage, String startDate, String endDate, String notes) {
+    public Medication(String name, double dosage, Form form, UnitOfDosage unitOfDosage, String notes) {
         this.name = name;
         this.dosage = dosage;
         this.form = form;

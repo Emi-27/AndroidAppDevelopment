@@ -22,9 +22,10 @@ public class Vitals {
 
     public Vitals() {
     }
-    
-    public Vitals(long id, String dateTime, int bloodPressure, int heartRate, double temperature, int respiratoryRate, int oxygenSaturation, double weight, double height, double bmi, double bloodGlucose, String notes) {
-        this.id = id;
+
+    public Vitals( String dateTime, int bloodPressure, int heartRate,
+                   double temperature, int respiratoryRate, int oxygenSaturation,
+                   double weight, double height, double bmi, double bloodGlucose, String notes) {
         this.dateTime = dateTime;
         this.bloodPressure = bloodPressure;
         this.heartRate = heartRate;

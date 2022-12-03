@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.groupdev.pillpall.R;
@@ -23,8 +24,20 @@ public class AddVitalFragment extends Fragment {
 
     private AddVitalViewModel ViewModel;
     private NavController navController;
+
     private Button addVitalButton;
-    private TextView vitalName;
+
+    private TextView dateTime;
+    private EditText bloodPressure;
+    private EditText heartRate;
+    private EditText temperature;
+    private EditText respiratoryRate;
+    private EditText oxygenSaturation;
+    private EditText weight;
+    private EditText height;
+    private EditText bmi;
+    private EditText bloodGlucose;
+    private EditText notes;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -37,19 +50,42 @@ public class AddVitalFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ViewModel = new ViewModelProvider(this).get(AddVitalViewModel.class);
+        initViews(view);
 
-        /* addVitalButton = view.findViewById(R.id.add_vitals_button);
-
-        addVitalButton.setOnClickListener (view1 -> {
-
-        });
-        */
     }
 
     private void initViews(View view) {
         navController = Navigation.findNavController(view);
         addVitalButton = view.findViewById(R.id.button_addNewVitals);
-        vitalName = view.findViewById(R.id.edit1);
+
+        dateTime = view.findViewById(R.id.textView_addVitals_dateTime);
+        bloodPressure = view.findViewById(R.id.editTextBloodPressure);
+        heartRate = view.findViewById(R.id.editTextHeartRate);
+        temperature = view.findViewById(R.id.editTextTemperature);
+        respiratoryRate = view.findViewById(R.id.editTextRespRate);
+        oxygenSaturation = view.findViewById(R.id.editTextOxSat);
+        weight = view.findViewById(R.id.editTextWeight);
+        height = view.findViewById(R.id.editTextHeight);
+        bmi = view.findViewById(R.id.editTextBmi);
+        bloodGlucose = view.findViewById(R.id.editTextBloodGluc);
+        notes = view.findViewById(R.id.editTextNotes);
+
+        addVitalButton.setOnClickListener(v -> {
+            ViewModel.addVital(dateTime.getText().toString(),
+                    bloodPressure.getText().toString(),
+                    heartRate.getText().toString(),
+                    temperature.getText().toString(),
+                    respiratoryRate.getText().toString(),
+                    oxygenSaturation.getText().toString(),
+                    weight.getText().toString(),
+                    height.getText().toString(),
+                    bmi.getText().toString(),
+                    bloodGlucose.getText().toString(),
+                    notes.getText().toString());
+            navController.navigate(R.id.navigation_vitals);
+        });
+
+
 
     }
 }

@@ -12,13 +12,13 @@ import java.util.concurrent.Executors;
 
 public class ReminderRepository {
     private static ReminderRepository instance;
-    private final ReminderDao reminderDao;
+    private final ReminderDAO reminderDao;
     private final LiveData<List<Reminder>> allReminders;
     private final ExecutorService executorService;
 
     private ReminderRepository(Application application) {
-        ReminderDatabase database = ReminderDatabase.getInstance(application);
-        reminderDao = database.reminderDao();
+        PillPallDataBase database = PillPallDataBase.getInstance(application);
+        reminderDao = database.reminderDAO();
         allReminders = reminderDao.getAllReminders();
         executorService = Executors.newFixedThreadPool(2);
     }
@@ -32,6 +32,10 @@ public class ReminderRepository {
 
     public LiveData<List<Reminder>> getAllReminders() {
         return allReminders;
+    }
+
+    public LiveData<List<Reminder>> getRemindersByDate(int date) {
+        return reminderDao.getRemindersByDate(date);
     }
 
     public void insertReminder(Reminder reminder) {

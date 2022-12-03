@@ -12,13 +12,13 @@ import java.util.concurrent.Executors;
 
 public class VitalsRepository {
     private static VitalsRepository instance;
-    private final VitalsDao vitalsDao;
+    private final VitalsDAO vitalsDao;
     private final LiveData<List<Vitals>> allVitals;
     private final ExecutorService executorService;
 
     private VitalsRepository(Application application) {
-        VitalsDatabase database = VitalsDatabase.getInstance(application);
-        vitalsDao = database.vitalsDao();
+        PillPallDataBase database = PillPallDataBase.getInstance(application);
+        vitalsDao = database.vitalsDAO();
         allVitals = vitalsDao.getAllVitals();
         executorService = Executors.newFixedThreadPool(2);
     }

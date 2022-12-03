@@ -6,67 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".view.AddVitalFragment">
 
+
     <TextView
         android:id="@+id/text_bloodPressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="108dp"
         android:text="@string/blood_pressure"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_heartRate"
+        android:id="@+id/text_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:text="@string/heart_rate"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/notes"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_bloodPressure" />
-
-    <TextView
-        android:id="@+id/text_temperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:text="@string/temperature"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_oxygenSaturation" />
+        app:layout_constraintTop_toBottomOf="@+id/text_bmi" />
 
     <TextView
         android:id="@+id/text_respiratoryRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
         android:text="@string/respiratory_rate"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_weight" />
 
     <TextView
-        android:id="@+id/text_oxygenSaturation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:text="@string/oxygen_saturation"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_height" />
-
-    <TextView
         android:id="@+id/text_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
         android:text="@string/weight"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +55,7 @@
         android:id="@+id/text_height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="28dp"
         android:text="@string/height"
         android:textSize="16sp"
@@ -84,159 +63,389 @@
         app:layout_constraintTop_toBottomOf="@+id/text_heartRate" />
 
     <TextView
-        android:id="@+id/text_bmi"
+        android:id="@+id/text_oxygenSaturation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:text="@string/bmi"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/oxygen_saturation"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_notes" />
+        app:layout_constraintTop_toBottomOf="@+id/text_bloodGlucose" />
 
     <TextView
         android:id="@+id/text_bloodGlucose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
         android:text="@string/blood_glucose"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_respiratoryRate" />
 
     <TextView
-        android:id="@+id/text_notes"
+        android:id="@+id/text_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:text="@string/notes"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/temperature"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_bloodGlucose" />
+        app:layout_constraintTop_toBottomOf="@+id/text_height" />
+
+    <TextView
+        android:id="@+id/text_bmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/bmi"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_oxygenSaturation" />
+
+    <TextView
+        android:id="@+id/text_heartRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/heart_rate"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_bloodPressure" />
 
     <EditText
         android:id="@+id/editTextBloodPressure"
-        android:layout_width="169dp"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="96dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextHeartRate"
-        android:layout_width="169dp"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextBloodPressure" />
 
     <EditText
         android:id="@+id/editTextHeight"
-        android:layout_width="169dp"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeartRate" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="169dp"
+        android:id="@+id/editTextOxSat"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextBloodGluc" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="169dp"
+        android:id="@+id/editTextNotes"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextBmi" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
-        android:layout_width="169dp"
+        android:id="@+id/editTextRespRate"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextWeight" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
-        android:layout_width="169dp"
+        android:id="@+id/editTextBloodGluc"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRespRate" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
-        android:layout_width="169dp"
+        android:id="@+id/editTextWeight"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTemperature" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
-        android:layout_width="169dp"
+        android:id="@+id/editTextBmi"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextOxSat" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
-        android:layout_width="169dp"
+        android:id="@+id/editTextTemperature"
+        android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="448dp"
+        android:layout_marginStart="180dp"
         android:ems="10"
+        android:inputType="text"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight" />
 
     <Button
         android:id="@+id/button_addNewVitals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="520dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="28dp"
         android:text="@string/add"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNotes" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/ic_notes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="108dp"
+        android:src="@drawable/ic_blood_pressure"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_heart_rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/ic_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_resp_rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_blood_glucose"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_oxygen_sat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/ic_bmi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="55dp"
+        android:text="mmHg"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="69dp"
+        android:text="bpm"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="89dp"
+        android:text="%"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="84dp"
+        android:text="g/l"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="69dp"
+        android:text="bpm"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="83dp"
+        android:text="kg"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="91dp"
+        android:text="C"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="79dp"
+        android:text="cm"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textview_addVitals_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_vitals_tittle"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_addVitals_dateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="16dp"
+        android:text=" Date Time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_addVitals_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

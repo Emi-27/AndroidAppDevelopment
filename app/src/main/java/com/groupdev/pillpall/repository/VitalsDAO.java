@@ -12,7 +12,7 @@ import com.groupdev.pillpall.model.Vitals;
 import java.util.List;
 
 @Dao
-public interface VitalsDao {
+public interface VitalsDAO {
     @Insert
     void insert(Vitals vitals);
 

@@ -3,41 +3,37 @@ package com.groupdev.pillpall.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Comparator;
+
 @Entity(tableName = "reminders_table")
-public class Reminder {
+public class Reminder implements Comparable<Reminder> {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
     private String description;
-    private String medication;
+    private long medicationID;
     private int quantity;
-    private int frequency;
-    private UnitOfTime unitOfTime;
-    private String startDateTime;
-    private String endDateTime;
-    private boolean repeat;
-    private boolean active;
+    private int time;
+    private int startDateTime;
+    private int endDateTime;
+    private boolean isRepeat;
+    private boolean isActive;
     private boolean isTaken;
-
-    public enum UnitOfTime {
-        HOURS, DAYS, WEEKS
-    }
 
     public Reminder() {
     }
 
-    public Reminder(String name, String description, String medication, int quantity, int frequency, UnitOfTime unitOfTime, String startDateTime, String endDateTime, boolean repeat, boolean active, boolean isTaken) {
+    public Reminder(String name, String description, long medicationID, int quantity, int time, int startDateTime, int endDateTime, boolean isRepeat, boolean isActive, boolean isTaken) {
         this.name = name;
         this.description = description;
-        this.medication = medication;
+        this.medicationID = medicationID;
         this.quantity = quantity;
-        this.frequency = frequency;
-        this.unitOfTime = unitOfTime;
+        this.time = time;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.repeat = repeat;
-        this.active = active;
+        this.isRepeat = isRepeat;
+        this.isActive = isActive;
         this.isTaken = isTaken;
     }
 
@@ -65,12 +61,12 @@ public class Reminder {
         this.description = description;
     }
 
-    public String getMedication() {
-        return medication;
+    public long getMedicationID() {
+        return medicationID;
     }
 
-    public void setMedication(String medication) {
-        this.medication = medication;
+    public void setMedicationID(long medicationID) {
+        this.medicationID = medicationID;
     }
 
     public int getQuantity() {
@@ -81,52 +77,44 @@ public class Reminder {
         this.quantity = quantity;
     }
 
-    public int getFrequency() {
-        return frequency;
+    public int getTime() {
+        return time;
     }
 
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
+    public void setTime(int time) {
+        this.time = time;
     }
 
-    public UnitOfTime getUnitOfTime() {
-        return unitOfTime;
-    }
-
-    public void setUnitOfTime(UnitOfTime unitOfTime) {
-        this.unitOfTime = unitOfTime;
-    }
-
-    public String getStartDateTime() {
+    public int getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(String startDateTime) {
+    public void setStartDateTime(int startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    public String getEndDateTime() {
+    public int getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(String endDateTime) {
+    public void setEndDateTime(int endDateTime) {
         this.endDateTime = endDateTime;
     }
 
     public boolean isRepeat() {
-        return repeat;
+        return isRepeat;
     }
 
     public void setRepeat(boolean repeat) {
-        this.repeat = repeat;
+        isRepeat = repeat;
     }
 
     public boolean isActive() {
-        return active;
+        return isActive;
     }
 
     public void setActive(boolean active) {
-        this.active = active;
+        isActive = active;
     }
 
     public boolean isTaken() {
@@ -143,14 +131,13 @@ public class Reminder {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", medication='" + medication + '\'' +
+                ", medicationID=" + medicationID +
                 ", quantity=" + quantity +
-                ", frequency=" + frequency +
-                ", unitOfTime=" + unitOfTime +
+                ", time=" + time +
                 ", startDateTime='" + startDateTime + '\'' +
                 ", endDateTime='" + endDateTime + '\'' +
-                ", repeat=" + repeat +
-                ", active=" + active +
+                ", isRepeat=" + isRepeat +
+                ", isActive=" + isActive +
                 ", isTaken=" + isTaken +
                 '}';
     }
@@ -161,5 +148,13 @@ public class Reminder {
         if (o == null || getClass() != o.getClass()) return false;
         Reminder reminder = (Reminder) o;
         return reminder.id==(this.id);
+    }
+
+    @Override
+    public int compareTo(Reminder u) {
+        if (getTime() == 0 || u.getTime() == 0) {
+            return 0;
+        }
+        return this.getTime() - (u.getTime());
     }
 }

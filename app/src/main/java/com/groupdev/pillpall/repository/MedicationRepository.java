@@ -18,7 +18,7 @@ public class MedicationRepository {
     private final ExecutorService executorService;
 
     public MedicationRepository(Application application) {
-        MedicationDatabase database = MedicationDatabase.getInstance(application);
+        PillPallDataBase database = PillPallDataBase.getInstance(application);
         medicationDAO = database.medicationDAO();
         allMedications = medicationDAO.getAllMedications();
         executorService = Executors.newFixedThreadPool(2);
