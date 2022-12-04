@@ -15,7 +15,8 @@ import com.groupdev.pillpall.model.Reminder;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.RemindersViewHolder> {
@@ -46,9 +47,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
     public void onBindViewHolder(@NonNull RemindersViewHolder holder, int position) {
         Reminder reminder = reminders.get(position);
 
-
+        String time = String.format("%04d", reminder.getTime());
+        String timeFormat = time.charAt(0)+""+time.charAt(1)+":"+time.charAt(2)+""+time.charAt(3);
+        holder.reminderTime.setText(timeFormat);
         holder.reminderName.setText(reminder.getMedicationName());
-        holder.reminderTime.setText((String.format("%d", reminder.getTime())));
 
         holder.reminderTaken.setChecked(reminders.get(position).isTaken());
 
@@ -100,17 +102,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
 
         }
     }
+
     public interface OnClickListener {
         void onClick(Reminder reminder);
 
-    }
-
-    public interface OnActiveClickListener {
-        void onClick(Reminder reminder);
-    }
-
-    public interface OnTakenClickListener {
-        void onClick(Reminder reminder);
     }
 
 }
