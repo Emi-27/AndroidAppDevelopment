@@ -77,11 +77,11 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
 
         public RemindersViewHolder(View itemView) {
             super(itemView);
-            reminderName = itemView.findViewById(R.id.name_medicationName_reminder);
-            reminderTime = itemView.findViewById(R.id.item_time_reminder);
+            reminderName = itemView.findViewById(R.id.textView_measureVital);
+            reminderTime = itemView.findViewById(R.id.textView_timeVital);
             reminderTaken = itemView.findViewById(R.id.checkBox_item_reminder);
             reminderImageButton = itemView.findViewById(R.id.button_rem_notif);
-            editImgBut = itemView.findViewById(R.id.imageButton_edit);
+            editImgBut = itemView.findViewById(R.id.imageButtonVitals_edit);
 
             editImgBut.setOnClickListener(this);
             reminderTaken.setOnClickListener(this);

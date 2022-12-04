@@ -67,8 +67,6 @@ dependencies {
     implementation "androidx.room:room-runtime:2.4.3"
     annotationProcessor "androidx.room:room-compiler:2.4.3"
 
-    //Chart
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //Horizontal Calendar
     implementation 'com.github.akshittyagi205:HorizontalCalendarView:v1.0.0'

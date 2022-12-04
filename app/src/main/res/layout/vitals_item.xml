@@ -12,42 +12,33 @@
 
         <TextView
             android:id="@+id/textView_measureVital"
-            android:layout_width="181dp"
-            android:layout_height="17dp"
+            android:layout_width="70dp"
+            android:layout_height="18dp"
             android:layout_gravity="center"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintStart_toEndOf="@+id/textView_timeVital"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/image_icon_vitals_item"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView_timeVital"
-            android:layout_width="50dp"
-            android:layout_height="17dp"
+            android:layout_width="150dp"
+            android:layout_height="18dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageButton
-            android:id="@+id/button_rem_notif"
+        <ImageView
+            android:id="@+id/image_icon_vitals_item"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonVitals_edit"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_notifications" />
-
-        <CheckBox
-            android:id="@+id/checkBox_item_reminder"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/button_rem_notif"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:srcCompat="@drawable/ic_blood_pressure" />
 
         <View
             android:id="@+id/divider"
