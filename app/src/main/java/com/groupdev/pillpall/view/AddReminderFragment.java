@@ -1,8 +1,10 @@
 package com.groupdev.pillpall.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,6 +48,7 @@ public class AddReminderFragment extends Fragment {
     private int time, date, frequency;
     private int dateTime;
     private Button saveReminder, addTime, addDate, removeReminder;
+    private AlertDialog.Builder alertBuilder;
     Calendar cal;
 
 
@@ -99,8 +102,25 @@ public class AddReminderFragment extends Fragment {
             if(reminderToBeAdded.getId() == 0){
                 Toast.makeText(getContext(), "Reminder not saved yet", Toast.LENGTH_SHORT).show();
             }else{
-            viewModel.removeReminder(reminderToBeAdded);
-            navController.navigate(R.id.navigation_home);}
+                alertBuilder.setMessage("Do you really want to delete this reminder?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                viewModel.removeReminder(reminderToBeAdded);
+                                navController.navigate(R.id.navigation_home);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alertBuilder.create();
+                alert.setTitle("Confirmation");
+                alert.show();
+            }
         });
     }
 
@@ -160,8 +180,6 @@ public class AddReminderFragment extends Fragment {
         cal = Calendar.getInstance();
         addTime.setOnClickListener(day -> {
                     DatePickerDialog dpd = new DatePickerDialog(getContext(), (view1, year, month, dayOfMonth) -> {
-                        Toast.makeText(getContext(), String.format("%d", year) + "-" + String.format("%02d", month + 1) + "-"
-                                + String.format("%02d", dayOfMonth), Toast.LENGTH_SHORT).show();
                         String sDate = year+ ""+ String.format("%02d",month+1) +""+ String.format("%02d",dayOfMonth);
                         date = Integer.parseInt(sDate);
                     }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
@@ -172,7 +190,6 @@ public class AddReminderFragment extends Fragment {
         addDate.setOnClickListener(newView -> {
                     TimePickerDialog tpd = new TimePickerDialog(getContext(), (view1, hourOfDay, minute) -> {
                         String sTime = String.format("%02d", hourOfDay) +String.format("%02d", minute);
-                        Toast.makeText(getContext(), sTime, Toast.LENGTH_SHORT).show();
                         time = Integer.parseInt(sTime);
                     }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), DateFormat.is24HourFormat(getContext()));
                     tpd.show();
