@@ -1,6 +1,5 @@
 package com.groupdev.pillpall.view;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.groupdev.pillpall.MainActivity;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.list.RemindersAdapter;
-import com.groupdev.pillpall.model.Reminder;
 import com.groupdev.pillpall.viewModel.HomeViewModel;
 
 import java.text.DateFormat;
@@ -30,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+
 
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
@@ -86,7 +82,8 @@ public class HomeFragment extends Fragment {
                 remindersAdapter.setReminders(reminders);
                 recyclerView.setAdapter(remindersAdapter);
             });
-            Toast.makeText(getContext(),date+" clicked!",Toast.LENGTH_SHORT).show();
+            int intDateTest = newFormatDate(date);
+            Toast.makeText(getContext(),intDateTest +" clicked!",Toast.LENGTH_SHORT).show();
         });
 
     }

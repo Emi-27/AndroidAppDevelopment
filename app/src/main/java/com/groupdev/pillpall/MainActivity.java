@@ -2,7 +2,6 @@ package com.groupdev.pillpall;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.bottomNavView, navController);
         NavigationUI.setupWithNavController(binding.navigationDrawer, navController);
 
-        /*
+        /* drawer navigation
         navigationView.setNavigationItemSelectedListener(item -> {
             Bundle bundle = new Bundle();
 

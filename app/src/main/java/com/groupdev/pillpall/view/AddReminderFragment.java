@@ -44,7 +44,7 @@ public class AddReminderFragment extends Fragment {
     private EditText editTextQuantity, editTextNotes;
     private int time, date, frequency;
     private int dateTime;
-    private Button saveReminder, addTime, addDate;
+    private Button saveReminder, addTime, addDate, removeReminder;
     Calendar cal;
 
 
@@ -72,12 +72,18 @@ public class AddReminderFragment extends Fragment {
         editTextNotes = view.findViewById(R.id.editText_AddReminder_notes);
         editTextQuantity = view.findViewById(R.id.editText_AddReminder_quantity);
         saveReminder = view.findViewById(R.id.button_addNewReminder);
+        removeReminder = view.findViewById(R.id.button_removeReminder);
 
         saveReminder.setOnClickListener(v -> {
             if(checkFields()){
             viewModel.AddReminder(reminderToBeAdded.getName(),editTextNotes.getText().toString(),
                     Integer.parseInt(editTextQuantity.getText().toString()),time,frequency,date);
             navController.navigate(R.id.navigation_home);}
+        });
+
+        removeReminder.setOnClickListener(v -> {
+            //TODO: remove reminder
+            navController.navigate(R.id.navigation_home);
         });
     }
 

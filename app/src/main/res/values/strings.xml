@@ -34,4 +34,6 @@
     <string name="confirm">Confirm</string>
     <string name="medication">Medication</string>
     <string name="frequency">Frequency</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
 </resources>
