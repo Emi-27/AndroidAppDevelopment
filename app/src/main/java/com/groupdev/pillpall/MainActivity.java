@@ -25,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.groupdev.pillpall.databinding.ActivityMainBinding;
+import com.groupdev.pillpall.view.AboutFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -120,6 +121,10 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog alert = alertBuilder.create();
                     alert.setTitle("Confirmation");
                     alert.show();
+                }
+                if(item.getItemId() == R.id.profile_button){
+                    navController.navigate(R.id.aboutFragment);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
                 return true;
             }

@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.model.Medication;
@@ -57,13 +58,19 @@ public class AddMedicationFragment extends Fragment {
         addMedicationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                medicationToBeAdded.setId(0);
-                medicationToBeAdded.setName(medicationName.getText().toString());
-                medicationToBeAdded.setDosage(Double.parseDouble(String.valueOf(medicationStrength.getText())));
-                medicationToBeAdded.setNotes(medicationNotes.getText().toString());
-                medicationsViewModel.addMedication(medicationToBeAdded);
-                System.out.println(medicationToBeAdded);
-                navController.navigate(R.id.navigation_medications);
+                String nameText, dosageText;
+                nameText = medicationName.getText().toString();
+                dosageText = medicationStrength.getText().toString();
+                if(!(nameText.isEmpty() || dosageText.isEmpty())){
+                    medicationToBeAdded.setName(nameText);
+                    medicationToBeAdded.setDosage(Double.parseDouble(dosageText));
+                    medicationToBeAdded.setNotes(medicationNotes.getText().toString());
+                    medicationsViewModel.addMedication(medicationToBeAdded);
+                    navController.navigate(R.id.navigation_medications);
+                }
+                else {
+                    Toast.makeText(getContext(), "Please fill in name and dosage.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
