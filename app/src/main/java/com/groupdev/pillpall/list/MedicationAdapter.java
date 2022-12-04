@@ -3,13 +3,16 @@ package com.groupdev.pillpall.list;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.model.Medication;
+import com.groupdev.pillpall.view.MedicationsFragment;
 
 import java.util.List;
 
@@ -40,7 +43,6 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
         holder.name.setText(medications.get(position).getName());
         holder.strength.setText(String.valueOf(medications.get(position).getDosage()));
         holder.units.setText(String.valueOf(medications.get(position).getUnitOfDosage()));
-
     }
 
     @Override
@@ -50,14 +52,16 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
 
     class MedicationsViewHolder extends RecyclerView.ViewHolder{
         TextView name, strength, units;
+        ImageButton deleteButton;
 
         MedicationsViewHolder(View itemView){
             super(itemView);
             name = itemView.findViewById(R.id.medication_name);
             strength = itemView.findViewById(R.id.medication_units);
             units = itemView.findViewById(R.id.medication_strength);
+            deleteButton = itemView.findViewById(R.id.delete_medicaton_button);
 
-            itemView.setOnClickListener(l -> {
+            deleteButton.setOnClickListener(l -> {
                 listener.onClick(medications.get(getBindingAdapterPosition()));
             });
         }

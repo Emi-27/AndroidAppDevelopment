@@ -98,8 +98,6 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
 
             editImgBut.setOnClickListener(v ->
                     onClickListener.onClick(reminders.get(getBindingAdapterPosition())));
-
-
         }
     }
 
