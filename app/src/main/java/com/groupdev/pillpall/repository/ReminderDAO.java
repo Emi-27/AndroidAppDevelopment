@@ -19,8 +19,8 @@ public interface ReminderDAO {
     @Update
     void update(Reminder reminder);
 
-    @Query("DELETE FROM reminders_table WHERE id = :id")
-    void delete(long id);
+    @Delete
+    void delete(Reminder reminder);
 
     @Query("SELECT * FROM reminders_table")
     LiveData<List<Reminder>> getAllReminders();

@@ -20,6 +20,15 @@ import android.widget.TextView;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.viewModel.AddVitalViewModel;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.SimpleFormatter;
+
 public class AddVitalFragment extends Fragment {
 
     private AddVitalViewModel ViewModel;
@@ -28,16 +37,7 @@ public class AddVitalFragment extends Fragment {
     private Button addVitalButton;
 
     private TextView dateTime;
-    private EditText bloodPressure;
-    private EditText heartRate;
-    private EditText temperature;
-    private EditText respiratoryRate;
-    private EditText oxygenSaturation;
-    private EditText weight;
-    private EditText height;
-    private EditText bmi;
-    private EditText bloodGlucose;
-    private EditText notes;
+    private EditText bloodPressure,heartRate,temperature,respiratoryRate,oxygenSaturation,weight,height,bmi,bloodGlucose,notes;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -70,8 +70,11 @@ public class AddVitalFragment extends Fragment {
         bloodGlucose = view.findViewById(R.id.editTextBloodGluc);
         notes = view.findViewById(R.id.editTextNotes);
 
+
+        dateTime.setText(DateFormat.getDateTimeInstance().format(System.currentTimeMillis()));
+
         addVitalButton.setOnClickListener(v -> {
-            ViewModel.addVital(dateTime.getText().toString(),
+            ViewModel.addVital(DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
                     bloodPressure.getText().toString(),
                     heartRate.getText().toString(),
                     temperature.getText().toString(),
@@ -88,4 +91,5 @@ public class AddVitalFragment extends Fragment {
 
 
     }
+
 }

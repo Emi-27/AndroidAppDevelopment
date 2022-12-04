@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.list.RemindersAdapter;
-import com.groupdev.pillpall.model.Reminder;
 import com.groupdev.pillpall.viewModel.HomeViewModel;
 
 import java.text.DateFormat;
@@ -28,52 +27,61 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import in.akshit.horizontalcalendar.HorizontalCalendarView;
 import in.akshit.horizontalcalendar.Tools;
 
 
-public class HomeFragment extends Fragment implements RemindersAdapter.OnClickListener {
+public class HomeFragment extends Fragment {
 
     private HomeViewModel viewModel;
     private RemindersAdapter remindersAdapter;
     private FloatingActionButton fab;
     private NavController navController;
     private HorizontalCalendarView calendarView;
+    private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        RecyclerView recyclerView = view.findViewById(R.id.home_recyclerView);
-        remindersAdapter = new RemindersAdapter(this);
-        recyclerView.setAdapter(remindersAdapter);
-        recyclerView.hasFixedSize();
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
-        return view;
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
+
         initializeViews(view);
         InitializeCalendar();
-
-        viewModel.getAllReminders().observe(getViewLifecycleOwner(), reminders -> {
-            remindersAdapter.setReminders(reminders);
-        });
-
+        setUpViews();
     }
 
     private void initializeViews(View view) {
         navController = Navigation.findNavController(view);
         calendarView = view.findViewById(R.id.calendar);
+        recyclerView = view.findViewById(R.id.home_recyclerView);
         fab = view.findViewById(R.id.add_reminder_button);
         fab.setOnClickListener(v -> {
             navController.navigate(R.id.addReminderFragment);
         });
+    }
+
+    private void setUpViews() {
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        remindersAdapter = new RemindersAdapter(viewModel.getAllReminders().getValue());
+        recyclerView.setAdapter(remindersAdapter);
+
+        viewModel.getAllReminders().observe(getViewLifecycleOwner(), reminders -> {
+            remindersAdapter.setReminders(reminders);
+        });
+
+        remindersAdapter.setOnClickListener(reminder -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("reminder", reminder);
+            navController.navigate(R.id.addReminderFragment, bundle);
+        });
+
+
     }
 
     private void InitializeCalendar() {
@@ -87,12 +95,15 @@ public class HomeFragment extends Fragment implements RemindersAdapter.OnClickLi
         datesToBeColored.add(Tools.getFormattedDateToday());
 
         calendarView.setUpCalendar(startTime.getTimeInMillis(), endTime.getTimeInMillis(), datesToBeColored, date -> {
-            viewModel.getAllReminders().observe(getViewLifecycleOwner(), reminders -> {
+            int intDateTest = newFormatDate(date);
+            viewModel.getRemindersByDate(intDateTest).observe(getViewLifecycleOwner(), reminders -> {
                 //Todo: Filter reminders by date
                 remindersAdapter.setReminders(reminders);
+                datesToBeColored.add(date);
+                Toast.makeText(getContext(),intDateTest +" clicked!",Toast.LENGTH_SHORT).show();
             });
-            int intDateTest = newFormatDate(date);
-            Toast.makeText(getContext(),intDateTest +" clicked!",Toast.LENGTH_SHORT).show();
+
+
         });
     }
 
@@ -106,25 +117,5 @@ public class HomeFragment extends Fragment implements RemindersAdapter.OnClickLi
         }
         String dayN = new SimpleDateFormat("yyyyMMdd").format(newDate);
         return Integer.parseInt(dayN);
-    }
-
-    @Override
-    public void onEditIconClick(Reminder reminder) {
-        Bundle bundle = new Bundle();
-        bundle.putString("reminderId", String.valueOf(reminder.getId()));
-        navController.navigate(R.id.addReminderFragment, bundle);
-    }
-
-    @Override
-    public void onActiveIconClick(Reminder reminder) {
-        System.out.println("Active icon clicked");
-        reminder.setActive(!reminder.isActive());
-        viewModel.upDateReminder(reminder);
-    }
-
-    @Override
-    public void takenLonCheckClick(Reminder reminder) {
-        reminder.setTaken(!reminder.isTaken());
-        viewModel.upDateReminder(reminder);
     }
 }

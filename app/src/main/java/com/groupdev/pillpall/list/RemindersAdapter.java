@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.model.Reminder;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,14 @@ import java.util.List;
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.RemindersViewHolder> {
 
     private List<Reminder> reminders;
-    final private OnClickListener onClickListener;
+    private OnClickListener onClickListener;
 
-    public RemindersAdapter(OnClickListener listener) {
-        reminders = new ArrayList<>();
-        onClickListener = listener;
+    public RemindersAdapter(List<Reminder> reminders) {
+        this.reminders = reminders;
+    }
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.onClickListener = listener;
     }
 
     public void setReminders(List<Reminder> reminders) {
@@ -41,9 +45,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
     @Override
     public void onBindViewHolder(@NonNull RemindersViewHolder holder, int position) {
         Reminder reminder = reminders.get(position);
-        String time = new SimpleDateFormat("HH:MM").format(reminder.getTime());
+
+
         holder.reminderName.setText(reminder.getMedicationName());
-        holder.reminderTime.setText(time);
+        holder.reminderTime.setText((String.format("%d", reminder.getTime())));
 
         holder.reminderTaken.setChecked(reminders.get(position).isTaken());
 
@@ -75,10 +80,10 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
         }
     }
 
-    public class RemindersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        final private TextView reminderName, reminderTime;
-        final private CheckBox reminderTaken;
-        final private ImageButton reminderImageButton, editImgBut;
+    public class RemindersViewHolder extends RecyclerView.ViewHolder{
+        private TextView reminderName, reminderTime;
+        private CheckBox reminderTaken;
+        private ImageButton reminderImageButton, editImgBut;
 
 
         public RemindersViewHolder(View itemView) {
@@ -88,29 +93,24 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
             reminderTaken = itemView.findViewById(R.id.checkBox_item_reminder);
             reminderImageButton = itemView.findViewById(R.id.imageButton_item_reminder);
             editImgBut = itemView.findViewById(R.id.imageButton_edit);
-        }
 
-        @Override
-        public void onClick(View v) {
+            editImgBut.setOnClickListener(v ->
+                    onClickListener.onClick(reminders.get(getBindingAdapterPosition())));
 
-            if (v == editImgBut) {
-                onClickListener.onEditIconClick(reminders.get(getBindingAdapterPosition()));
-                notifyDataSetChanged();
-            } else if (v == reminderTaken) {
-                onClickListener.onActiveIconClick(reminders.get(getBindingAdapterPosition()));
-                notifyDataSetChanged();
-            } else {
-                onClickListener.takenLonCheckClick(reminders.get(getBindingAdapterPosition()));
-                notifyDataSetChanged();
-            }
+
         }
     }
-
     public interface OnClickListener {
-        void onEditIconClick(Reminder reminder);
+        void onClick(Reminder reminder);
 
-        void onActiveIconClick(Reminder reminder);
-
-        void takenLonCheckClick(Reminder reminder);
     }
+
+    public interface OnActiveClickListener {
+        void onClick(Reminder reminder);
+    }
+
+    public interface OnTakenClickListener {
+        void onClick(Reminder reminder);
+    }
+
 }

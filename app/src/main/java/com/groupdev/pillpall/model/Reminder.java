@@ -4,8 +4,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "reminders_table")
-public class Reminder implements Comparable<Reminder> {
+public class Reminder implements Comparable<Reminder> , Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private long id;

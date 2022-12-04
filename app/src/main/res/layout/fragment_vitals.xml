@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.VitalsFragment">
 
-    <TextView
-        android:id="@+id/text_vitals"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_vitals"
@@ -29,4 +16,119 @@
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button_bloodPressure"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/blood_pressure"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_height" />
+
+    <Button
+        android:id="@+id/button_heartRate"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
+        android:text="@string/heart_rate"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_respiratoryRate"
+        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintStart_toEndOf="@+id/button_oxygenSaturation"
+        app:layout_constraintTop_toBottomOf="@+id/button_bloodGlucose" />
+
+    <Button
+        android:id="@+id/button_temperature"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/temperature"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_bmi" />
+
+    <Button
+        android:id="@+id/button_respiratoryRate"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/respiratory_rate"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_bloodPressure" />
+
+    <Button
+        android:id="@+id/button_oxygenSaturation"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/oxygen_saturation"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_temperature" />
+
+    <Button
+        android:id="@+id/button_weight"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/weight"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_height"
+        app:layout_constraintStart_toEndOf="@+id/button_bmi"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_height"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/height"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_bmi"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/bmi"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_bloodGlucose"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/blood_glucose"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_bloodPressure"
+        app:layout_constraintStart_toEndOf="@+id/button_temperature"
+        app:layout_constraintTop_toBottomOf="@+id/button_weight" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.835" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

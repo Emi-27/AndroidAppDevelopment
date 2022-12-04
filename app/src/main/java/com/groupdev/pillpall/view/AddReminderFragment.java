@@ -1,5 +1,6 @@
 package com.groupdev.pillpall.view;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -59,8 +60,15 @@ public class AddReminderFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AddReminderViewModel.class);
-        viewModel.init(getArguments().getString("reminderId"));
-        reminderToBeAdded = new Reminder();
+
+        if(getArguments() != null) {
+            Bundle bundle = getArguments();
+            reminderToBeAdded = (Reminder) bundle.getSerializable("reminder");
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Edit Reminder " + reminderToBeAdded.getMedicationName());
+        } else {
+            reminderToBeAdded = new Reminder();
+        }
+
         initViews(view);
         initializeMedicationSpinner(view);
         initializeFrequencySpinner(view);
@@ -75,18 +83,10 @@ public class AddReminderFragment extends Fragment {
         saveReminder = view.findViewById(R.id.button_addNewReminder);
         removeReminder = view.findViewById(R.id.button_removeReminder);
 
-        viewModel.getReminder().observe(getViewLifecycleOwner(), reminder -> {
-            if (reminder != null) {
-                reminderToBeAdded = reminder;
-                editTextNotes.setText(reminder.getDescription());
-                editTextQuantity.setText(String.valueOf(reminder.getQuantity()));
-                saveReminder.setText("Update Reminder");
-                removeReminder.setVisibility(View.VISIBLE);
-            }
-            else {
-                removeReminder.setVisibility(View.GONE);
-            }
-        });
+        if(getArguments() != null) {
+            editTextQuantity.setText(String.valueOf(reminderToBeAdded.getQuantity()));
+            removeReminder.setVisibility(View.VISIBLE);
+        }
 
         saveReminder.setOnClickListener(v -> {
             if(checkFields()){
@@ -96,11 +96,13 @@ public class AddReminderFragment extends Fragment {
         });
 
         removeReminder.setOnClickListener(v -> {
-            viewModel.removeReminder();
-            navController.navigate(R.id.navigation_home);
+            if(reminderToBeAdded.getId() == 0){
+                Toast.makeText(getContext(), "Reminder not saved yet", Toast.LENGTH_SHORT).show();
+            }else{
+            viewModel.removeReminder(reminderToBeAdded);
+            navController.navigate(R.id.navigation_home);}
         });
     }
-
 
     private void initializeMedicationSpinner(View view){
         spinnerMedication = view.findViewById(R.id.spinner);
@@ -169,8 +171,8 @@ public class AddReminderFragment extends Fragment {
 
         addDate.setOnClickListener(newView -> {
                     TimePickerDialog tpd = new TimePickerDialog(getContext(), (view1, hourOfDay, minute) -> {
-                        Toast.makeText(getContext(), String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute), Toast.LENGTH_SHORT).show();
-                        String sTime = hourOfDay +""+ minute;
+                        String sTime = String.format("%02d", hourOfDay) +String.format("%02d", minute);
+                        Toast.makeText(getContext(), sTime, Toast.LENGTH_SHORT).show();
                         time = Integer.parseInt(sTime);
                     }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), DateFormat.is24HourFormat(getContext()));
                     tpd.show();
@@ -185,7 +187,6 @@ public class AddReminderFragment extends Fragment {
         }
         if (time == 0) {
             time = Integer.parseInt(cal.get(Calendar.HOUR_OF_DAY)+""+ cal.get(Calendar.MINUTE));
-            Toast.makeText(getContext(), "Please enter a time", Toast.LENGTH_SHORT).show();
         }
         if (date == 0) {
             date = Integer.parseInt(LocalDate.now().getYear()+""+ String.format("%02d",LocalDate.now().getMonthValue())+""+ String.format("%02d",LocalDate.now().getDayOfMonth()));

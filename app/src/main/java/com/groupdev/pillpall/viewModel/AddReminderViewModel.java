@@ -33,8 +33,8 @@ public class AddReminderViewModel extends AndroidViewModel {
         return reminderRepository.getReminderById(Long.parseLong(reminderId));
     }
 
-    public void removeReminder(){
-        reminderRepository.removeReminder(Long.parseLong(reminderId));
+    public void removeReminder(Reminder reminder){
+        reminderRepository.removeReminder(reminder);
     }
 
     public void AddReminder(String reminderNameMed, String notes, int quantity,

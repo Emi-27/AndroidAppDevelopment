@@ -50,8 +50,8 @@ public class ReminderRepository {
         executorService.execute(() -> reminderDao.update(reminder));
     }
 
-    public void removeReminder(long id) {
-        executorService.execute(() -> reminderDao.delete(id));
+    public void removeReminder(Reminder reminder) {
+        executorService.execute(() -> reminderDao.delete(reminder));
     }
 
     public void deleteAllReminders() {

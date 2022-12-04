@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.viewModel.VitalsViewModel;
@@ -22,7 +25,9 @@ public class VitalsFragment extends Fragment {
     private VitalsViewModel vitalsViewModel;
     private NavController navController;
     private FloatingActionButton fab;
-    private TextView textView;
+    private Button bloodPressure, heartRate, temperature, respiratoryRate, oxygenSaturation, weight, height, bmi, bloodGlucose;
+    private LineChart lineChart;
+    private LineDataSet lineChartLineDataSet;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +45,16 @@ public class VitalsFragment extends Fragment {
     private void initializeViews(View view) {
         navController = Navigation.findNavController(view);
         fab = view.findViewById(R.id.button_add_vitals);
-        textView = view.findViewById(R.id.text_vitals);
+        bloodPressure = view.findViewById(R.id.button_bloodPressure);
+        heartRate = view.findViewById(R.id.button_heartRate);
+        temperature = view.findViewById(R.id.button_temperature);
+        respiratoryRate = view.findViewById(R.id.button_respiratoryRate);
+        oxygenSaturation = view.findViewById(R.id.button_oxygenSaturation);
+        weight = view.findViewById(R.id.button_weight);
+        height = view.findViewById(R.id.button_height);
+        bmi = view.findViewById(R.id.button_bmi);
+        bloodGlucose = view.findViewById(R.id.button_bloodGlucose);
+        lineChart = view.findViewById(R.id.lineChart);
     }
 
     private void setupViews() {
