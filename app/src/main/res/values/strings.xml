@@ -10,6 +10,7 @@
     <string name="image_description">Bell-active/inactive</string>
     <string name="profile">Profile</string>
     <string name="add_patient">Add Patient</string>
+    <string name="fragment_add_vital">Add Vital</string>
     <string name="invite_friend">Invite Friend</string>
     <string name="user_name">User Name</string>
     <string name="user_email">User Email</string>

@@ -99,27 +99,12 @@ public class AddReminderFragment extends Fragment {
         });
 
         removeReminder.setOnClickListener(v -> {
-            if(reminderToBeAdded.getId() == 0){
+            if (reminderToBeAdded.getId() == 0) {
                 Toast.makeText(getContext(), "Reminder not saved yet", Toast.LENGTH_SHORT).show();
-            }else{
-                alertBuilder.setMessage("Do you really want to delete this reminder?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                viewModel.removeReminder(reminderToBeAdded);
-                                navController.navigate(R.id.navigation_home);
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = alertBuilder.create();
-                alert.setTitle("Confirmation");
-                alert.show();
+            } else {
+                viewModel.removeReminder(reminderToBeAdded);
+                navController.navigate(R.id.navigation_home);
+
             }
         });
     }
@@ -156,9 +141,9 @@ public class AddReminderFragment extends Fragment {
         spinnerFrequency = view.findViewById(R.id.spinner2);
         List<String> frequencyList = new ArrayList<>();
         frequencyList.add("Once a day");
-        frequencyList.add("Each 12 hours");
-        frequencyList.add("Each 8 hours");
-        frequencyList.add("Each 6 hours");
+        frequencyList.add("Every 12 hours");
+        frequencyList.add("Every 8 hours");
+        frequencyList.add("Every 6 hours");
         spinnerFrequency.setAdapter(new ArrayAdapter<>(
                 getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, frequencyList));
         spinnerFrequency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
