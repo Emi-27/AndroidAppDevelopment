@@ -32,4 +32,8 @@ public class MedicationsViewModel extends AndroidViewModel {
         medicationRepository.addMedication(medication);
     }
 
+    public void deleteMedication(Medication medication){
+        medicationRepository.deleteMedication(medication);
+    }
+
 }

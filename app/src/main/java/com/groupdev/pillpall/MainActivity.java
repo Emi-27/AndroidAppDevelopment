@@ -1,5 +1,6 @@
 package com.groupdev.pillpall;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ActivityMainBinding binding;
     private FirebaseAuth auth;
+    private AlertDialog.Builder alertBuilder;
     TextView drawerUsername, drawerEmail;
 
 
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
+        alertBuilder = new AlertDialog.Builder(this);
         initializeLayout();
         setupNavigation();
         drawerUsername.setText(currentUser.getDisplayName());
@@ -95,12 +99,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.logout_button){
-                    auth.signOut();
-                    Intent intent = new Intent(MainActivity.this, Login.class);
-                    startActivity(intent);
+                    alertBuilder.setMessage("Do you really want to log out?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                    auth.signOut();
+                                    Intent intent = new Intent(MainActivity.this, Login.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                    item.setChecked(false);
+                                }
+                            });
+                    AlertDialog alert = alertBuilder.create();
+                    alert.setTitle("Confirmation");
+                    alert.show();
                 }
-
-
                 return true;
             }
         });
