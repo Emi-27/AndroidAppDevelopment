@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.list.RemindersAdapter;
+import com.groupdev.pillpall.model.Reminder;
 import com.groupdev.pillpall.viewModel.HomeViewModel;
 
 import java.text.DateFormat;
@@ -68,20 +69,31 @@ public class HomeFragment extends Fragment {
     private void setUpViews() {
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        remindersAdapter = new RemindersAdapter(viewModel.getAllReminders().getValue());
+        remindersAdapter = new RemindersAdapter(viewModel.getAllReminders().getValue(), new RemindersAdapter.OnClickListener() {
+            @Override
+            public void onClick(Reminder reminder) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("reminder", reminder);
+                navController.navigate(R.id.addReminderFragment, bundle);
+            }
+
+            @Override
+            public void onTake(Reminder reminder) {
+                reminder.setTaken(!reminder.isTaken());
+                viewModel.updateReminder(reminder);
+            }
+
+            @Override
+            public void onActive(Reminder reminder) {
+                reminder.setActive(!reminder.isActive());
+                viewModel.updateReminder(reminder);
+            }
+        });
         recyclerView.setAdapter(remindersAdapter);
 
         viewModel.getAllReminders().observe(getViewLifecycleOwner(), reminders -> {
             remindersAdapter.setReminders(reminders);
         });
-
-        remindersAdapter.setOnClickListener(reminder -> {
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("reminder", reminder);
-            navController.navigate(R.id.addReminderFragment, bundle);
-        });
-
-
     }
 
     private void InitializeCalendar() {
@@ -97,10 +109,8 @@ public class HomeFragment extends Fragment {
         calendarView.setUpCalendar(startTime.getTimeInMillis(), endTime.getTimeInMillis(), datesToBeColored, date -> {
             int intDateTest = newFormatDate(date);
             viewModel.getRemindersByDate(intDateTest).observe(getViewLifecycleOwner(), reminders -> {
-                //Todo: Filter reminders by date
                 remindersAdapter.setReminders(reminders);
                 datesToBeColored.add(date);
-                Toast.makeText(getContext(),intDateTest +" clicked!",Toast.LENGTH_SHORT).show();
             });
 
 

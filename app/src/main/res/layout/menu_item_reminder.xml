@@ -31,7 +31,7 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton_item_reminder"
+            android:id="@+id/button_rem_notif"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginTop="16dp"
@@ -46,7 +46,7 @@
             android:layout_height="28dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton_item_reminder"
+            app:layout_constraintEnd_toStartOf="@+id/button_rem_notif"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View

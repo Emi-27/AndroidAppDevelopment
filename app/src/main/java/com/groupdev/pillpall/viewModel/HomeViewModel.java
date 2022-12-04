@@ -27,17 +27,10 @@ public class HomeViewModel extends AndroidViewModel {
 
     public LiveData<List<Reminder>> getRemindersByDate(int date) {
         LiveData<List<Reminder>> reminders = repository.getRemindersByDate(date);
-
-        /*if(reminders.getValue().isEmpty()) {
-            Collections.sort(Objects.requireNonNull(reminders.getValue()));
-            return reminders;
-        };
-
-         */
-        return reminders;
+                return reminders;
     }
 
-    public void upDateReminder(Reminder reminder){
+    public void updateReminder(Reminder reminder){
         repository.updateReminder(reminder);
     }
 
