@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.groupdev.pillpall.R;
@@ -21,9 +20,7 @@ import java.util.List;
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.RemindersViewHolder> {
 
     private List<Reminder> reminders;
-    private OnClickListener clickListener;
     final private OnClickListener onClickListener;
-    private NavController navController;
 
     public RemindersAdapter(OnClickListener listener) {
         reminders = new ArrayList<>();
@@ -56,13 +53,7 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
             holder.reminderImageButton.setImageResource(R.drawable.ic_notification);
         }
 
-        holder.reminderTaken.setOnClickListener(v -> {
-            if (holder.reminderTaken.isChecked()) {
-                reminders.get(position).setTaken(true);
-            } else {
-                reminders.get(position).setTaken(false);
-            }
-        });
+        holder.reminderTaken.setChecked(reminders.get(position).isTaken());
 
         holder.reminderImageButton.setOnClickListener(v -> {
             if (reminders.get(position).isActive()) {
