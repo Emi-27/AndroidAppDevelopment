@@ -17,11 +17,24 @@ public class AddReminderViewModel extends AndroidViewModel {
 
     private ReminderRepository reminderRepository;
     private MedicationRepository medicationRepository;
+    private String reminderId;
 
     public AddReminderViewModel(Application app) {
         super(app);
         reminderRepository = ReminderRepository.getInstance(app);
         medicationRepository = MedicationRepository.getInstance(app);
+    }
+
+    public void init(String reminderId){
+        this.reminderId = reminderId;
+    }
+
+    public LiveData<Reminder> getReminder(){
+        return reminderRepository.getReminderById(Long.parseLong(reminderId));
+    }
+
+    public void removeReminder(){
+        reminderRepository.removeReminder(Long.parseLong(reminderId));
     }
 
     public void AddReminder(String reminderNameMed, String notes, int quantity,

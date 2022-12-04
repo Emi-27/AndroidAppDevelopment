@@ -59,6 +59,7 @@ public class AddReminderFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AddReminderViewModel.class);
+        viewModel.init(getArguments().getString("reminderId"));
         reminderToBeAdded = new Reminder();
         initViews(view);
         initializeMedicationSpinner(view);
@@ -74,6 +75,19 @@ public class AddReminderFragment extends Fragment {
         saveReminder = view.findViewById(R.id.button_addNewReminder);
         removeReminder = view.findViewById(R.id.button_removeReminder);
 
+        viewModel.getReminder().observe(getViewLifecycleOwner(), reminder -> {
+            if (reminder != null) {
+                reminderToBeAdded = reminder;
+                editTextNotes.setText(reminder.getDescription());
+                editTextQuantity.setText(String.valueOf(reminder.getQuantity()));
+                saveReminder.setText("Update Reminder");
+                removeReminder.setVisibility(View.VISIBLE);
+            }
+            else {
+                removeReminder.setVisibility(View.GONE);
+            }
+        });
+
         saveReminder.setOnClickListener(v -> {
             if(checkFields()){
             viewModel.AddReminder(reminderToBeAdded.getName(),editTextNotes.getText().toString(),
@@ -82,7 +96,7 @@ public class AddReminderFragment extends Fragment {
         });
 
         removeReminder.setOnClickListener(v -> {
-            //TODO: remove reminder
+            viewModel.removeReminder();
             navController.navigate(R.id.navigation_home);
         });
     }

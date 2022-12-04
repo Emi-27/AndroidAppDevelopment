@@ -70,6 +70,4 @@
             app:srcCompat="@drawable/ic_edit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </LinearLayout>

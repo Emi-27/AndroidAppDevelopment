@@ -15,17 +15,19 @@ import com.groupdev.pillpall.R;
 import com.groupdev.pillpall.model.Reminder;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.RemindersViewHolder> {
 
     private List<Reminder> reminders;
-    private OnReminderClickListener listener;
-    private OnRemoveReminderClickListener removeListener;
+    private OnClickListener clickListener;
+    final private OnClickListener onClickListener;
     private NavController navController;
 
-    public RemindersAdapter() {
-        this.listener = listener;
+    public RemindersAdapter(OnClickListener listener) {
+        reminders = new ArrayList<>();
+        onClickListener = listener;
     }
 
     public void setReminders(List<Reminder> reminders) {
@@ -48,59 +50,44 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
 
         holder.reminderTaken.setChecked(reminders.get(position).isTaken());
 
-        if(reminders.get(position).isActive()){
+        if (reminders.get(position).isActive()) {
             holder.reminderImageButton.setImageResource(R.drawable.ic_notification_active);
-        }
-        else{
+        } else {
             holder.reminderImageButton.setImageResource(R.drawable.ic_notification);
         }
 
         holder.reminderTaken.setOnClickListener(v -> {
-            if(holder.reminderTaken.isChecked()){
+            if (holder.reminderTaken.isChecked()) {
                 reminders.get(position).setTaken(true);
-            }
-            else{
+            } else {
                 reminders.get(position).setTaken(false);
             }
         });
 
         holder.reminderImageButton.setOnClickListener(v -> {
-            if(reminders.get(position).isActive()){
+            if (reminders.get(position).isActive()) {
                 reminders.get(position).setActive(false);
                 holder.reminderImageButton.setImageResource(R.drawable.ic_notification);
-            }
-            else{
+            } else {
                 reminders.get(position).setActive(true);
                 holder.reminderImageButton.setImageResource(R.drawable.ic_notification_active);
             }
-        });
-
-        holder.editImgBut.setOnClickListener(v -> {
-            //Todo: Edit reminder
-            navController.navigate(R.id.addReminderFragment);
         });
     }
 
     @Override
     public int getItemCount() {
-        if(reminders != null){
+        if (reminders != null) {
             return reminders.size();
-        }
-        else {
+        } else {
             return 0;
         }
     }
 
-    public void setOnClickListener(OnReminderClickListener<Reminder> reminder) {
-        this.reminders = reminders;
-        notifyDataSetChanged();
-    }
-
-
-    public class RemindersViewHolder extends RecyclerView.ViewHolder {
-        private TextView reminderName, reminderTime;
-        private CheckBox reminderTaken;
-        private ImageButton reminderImageButton, editImgBut;
+    public class RemindersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        final private TextView reminderName, reminderTime;
+        final private CheckBox reminderTaken;
+        final private ImageButton reminderImageButton, editImgBut;
 
 
         public RemindersViewHolder(View itemView) {
@@ -111,13 +98,28 @@ public class RemindersAdapter extends RecyclerView.Adapter<RemindersAdapter.Remi
             reminderImageButton = itemView.findViewById(R.id.imageButton_item_reminder);
             editImgBut = itemView.findViewById(R.id.imageButton_edit);
         }
+
+        @Override
+        public void onClick(View v) {
+
+            if (v == editImgBut) {
+                onClickListener.onEditIconClick(reminders.get(getBindingAdapterPosition()));
+                notifyDataSetChanged();
+            } else if (v == reminderTaken) {
+                onClickListener.onActiveIconClick(reminders.get(getBindingAdapterPosition()));
+                notifyDataSetChanged();
+            } else {
+                onClickListener.takenLonCheckClick(reminders.get(getBindingAdapterPosition()));
+                notifyDataSetChanged();
+            }
+        }
     }
 
-    public interface OnReminderClickListener<T> {
-        void onReminderClick(Reminder reminder);
-    }
+    public interface OnClickListener {
+        void onEditIconClick(Reminder reminder);
 
-    public interface OnRemoveReminderClickListener {
-        void onRemoveReminderClick(Reminder reminder);
+        void onActiveIconClick(Reminder reminder);
+
+        void takenLonCheckClick(Reminder reminder);
     }
 }

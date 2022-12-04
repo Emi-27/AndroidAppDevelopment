@@ -34,8 +34,8 @@ public class HomeViewModel extends AndroidViewModel {
         return repository.getRemindersByDate(date);
     }
 
-    public void delete(final Reminder reminder) {
-        repository.deleteReminder(reminder);
+    public void upDateReminder(Reminder reminder){
+        repository.updateReminder(reminder);
     }
 
 }

@@ -38,6 +38,10 @@ public class ReminderRepository {
         return reminderDao.getRemindersByDate(date);
     }
 
+    public LiveData<Reminder> getReminderById(long id) {
+        return reminderDao.getReminderById(id);
+    }
+
     public void insertReminder(Reminder reminder) {
         executorService.execute(() -> reminderDao.insert(reminder));
     }
@@ -46,8 +50,8 @@ public class ReminderRepository {
         executorService.execute(() -> reminderDao.update(reminder));
     }
 
-    public void deleteReminder(Reminder reminder) {
-        executorService.execute(() -> reminderDao.delete(reminder));
+    public void removeReminder(long id) {
+        executorService.execute(() -> reminderDao.delete(id));
     }
 
     public void deleteAllReminders() {
